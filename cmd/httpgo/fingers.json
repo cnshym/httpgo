@@ -1,5 +1,40 @@
 [
     {
+        "name": "【PagerMaid-Pyro后台管理系统】",
+        "keyword": "title=\"PagerMaid-Pyro\" && body=\"href=\\\"https://xtaolabs.com/pagermaid-logo.png\\\"\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Pichome接口】",
+        "keyword": "title=\"PicHome\"",
+        "type": "cms"
+    },
+    {
+        "name": "【WordPress-Madara】",
+        "keyword": "body=\"/wp-content/plugins/madara/\"",
+        "type": "cms"
+    },
+    {
+        "name": "【数夫CRM】",
+        "keyword": "icon_hash=\"-244202779\"",
+        "type": "cms"
+    },
+    {
+        "name": "【原创先锋后台管理系统】",
+        "keyword": "body=\"https://www.bjycxf.com\"",
+        "type": "cms"
+    },
+    {
+        "name": "【蜂信物联-FastBee-物联网系统】",
+        "keyword": "body=\"fastbee\" && icon-hash=\"-307138793\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Trojan管理平台】",
+        "keyword": "title=\"trojan 管理平台\"",
+        "type": "cms"
+    },
+    {
         "name": "【华舜后台管理框架】",
         "keyword": "body=\"华舜后台管理框架\"",
         "type": "cms"
@@ -22677,7 +22712,7 @@
     },
     {
         "name": "【超图-SuperMap-iServer】",
-        "keyword": "icon_hash=\"1740191553\" || title=\"欢迎使用 SuperMap iServer 6R\" || body=\"window.location.href=\\\"iserver\\\";\" || body=\"id=\\\"copyright\\\"><a href=\\\"http://www.supermap.com.cn\" || title=\"SuperMap iServer\"",
+        "keyword": "icon_hash=\"-1656662001\" || icon_hash=\"1740191553\" || title=\"欢迎使用 SuperMap iServer 6R\" || body=\"window.location.href=\\\"iserver\\\";\" || body=\"id=\\\"copyright\\\"><a href=\\\"http://www.supermap.com.cn\" || title=\"SuperMap iServer\"",
         "type": "cms"
     },
     {
