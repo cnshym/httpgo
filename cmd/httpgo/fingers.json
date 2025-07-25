@@ -1,5 +1,100 @@
 [
     {
+        "name": "【Electrolink】",
+        "keyword": "title=\"Electrolink\"",
+        "type": "cms"
+    },
+    {
+        "name": "【SysAid-On-Prem】",
+        "keyword": "icon_hash=\"1540720428\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Ivanti-EPMM】",
+        "keyword": "icon_hash=\"1983356674\"",
+        "type": "cms"
+    },
+    {
+        "name": "【杭州九麒科技-BigAnt-Admin】",
+        "keyword": "title=\"BigAnt Admin \" || body=\"/Public/static/admin/admin_common.js\"",
+        "type": "cms"
+    },
+    {
+        "name": "【InvisionCommunity】",
+        "keyword": "body=\"Invision\" && body=\"ips4\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Meteobridge】",
+        "keyword": "body=\"Meteobridge\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Apache-Kafka-Connect客户端】",
+        "keyword": "body=\"kafka_cluster_id\"",
+        "type": "cms"
+    },
+    {
+        "name": "【AgentSyste代理商管理系统】",
+        "keyword": "body=\"AgentSyste代理商管理系统\"",
+        "type": "cms"
+    },
+    {
+        "name": "【杭州新威数字信息-SMG网关管理软件】",
+        "keyword": "body=\"text ml10 mr20\" && (title=\"网关管理软件\" || title=\"Gateway Management\")",
+        "type": "cms"
+    },
+    {
+        "name": "【龙采商城系统】",
+        "keyword": "body=\"'url':'/pc2.0/index/index'\"",
+        "type": "cms"
+    },
+    {
+        "name": "【WordPress-Ads-pro插件】",
+        "keyword": "body=\"/wp-content/plugins/ap-plugin-scripteo\"",
+        "type": "cms"
+    },
+    {
+        "name": "【上海网仕科技-Transcoder-MS】",
+        "keyword": "body=\"webtrans//js/md5-min.js\"",
+        "type": "cms"
+    },
+    {
+        "name": "【南北外贸ERP】",
+        "keyword": "title=\"南北外贸ERP\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Langflow】",
+        "keyword": "title=\"Langflow\" || body=\"Sign in to Langflow\"",
+        "type": "cms"
+    },
+    {
+        "name": "【锐捷云桌面】",
+        "keyword": "title=\"VDI-WebClient\"",
+        "type": "cms"
+    },
+    {
+        "name": "【扁鹊飞救区域协同救治与应急响应平台】",
+        "keyword": "body=\"Index.aspx?sr=exper\" || body=\"/ImagesNew/home/bgi001.png\"",
+        "type": "cms"
+    },
+    {
+        "name": "【DvAdmin(django-vue-admin)-北京巨梦科技】",
+        "keyword": "title=\"django-vue-admin\" || body=\"基于RBAC模型的权限控制的一整套基础开发平台，权限粒度达到列级别，前后端分离，后端采用django + django-rest-framework，前端采用基于 vue3 + CompositionAPI + typescript + vite + element plus\"",
+        "type": "cms"
+    },
+    {
+        "name": "【weSite企业建站系统(websoft.top)】",
+        "keyword": "body=\"weSite企业建站系统\"",
+        "type": "cms"
+    },
+    {
+        "name": "【企业建站系统-北京新鸿儒世纪网络技术有限公司】",
+        "keyword": "body=\"/plugin/Visit/Default.js\"",
+        "type": "cms"
+    },
+    {
         "name": "【PagerMaid-Pyro后台管理系统】",
         "keyword": "title=\"PagerMaid-Pyro\" && body=\"href=\\\"https://xtaolabs.com/pagermaid-logo.png\\\"\"",
         "type": "cms"
@@ -26,7 +121,7 @@
     },
     {
         "name": "【蜂信物联-FastBee-物联网系统】",
-        "keyword": "body=\"fastbee\" && icon-hash=\"-307138793\"",
+        "keyword": "body=\"fastbee\" && icon_hash=\"-307138793\"",
         "type": "cms"
     },
     {
@@ -46,7 +141,7 @@
     },
     {
         "name": "【恒网建站系统1-南京勤其明恒网络科技有限公司】",
-        "keyword": "body=\"js/100rem.js\" || body=\"技术支持：恒网承建\"",
+        "keyword": "body=\"js/100rem.js\" || body=\"技术支持：恒网承建\" || body=\"技术支持：恒网-承建\"",
         "type": "cms"
     },
     {
@@ -646,7 +741,7 @@
     },
     {
         "name": "【YunsuoWAF】",
-        "keyword": "header=\"yunsuo_session\" || body=\"yunsuologo\"",
+        "keyword": "header=\"yunsuo_session\" || body=\"yunsuologo\" || body=\"YunSuoAutoJump()\"",
         "type": "other"
     },
     {
@@ -2051,7 +2146,7 @@
     },
     {
         "name": "【金蝶云星空】",
-        "keyword": "body=\"HTML5/content/themes/kdcss.min.css\" || body=\"/ClientBin/Kingdee.BOS.XPF.App.xap\"",
+        "keyword": "body=\"HTML5/content/themes/kdcss.min.css\" || body=\"/ClientBin/Kingdee.BOS.XPF.App.xap\" || title=\"金蝶云星空 管理中心\"",
         "type": "cms"
     },
     {
@@ -3297,6 +3392,11 @@
     {
         "name": "【大华-DSS】",
         "keyword": "icon_hash=\"2095320044\" || icon_hash=\"411052691\" || (body=\"itcLoginForm\" && body=\"portal/login_init.action\")",
+        "type": "cms"
+    },
+    {
+        "name": "【大华-DSS-csclient】",
+        "keyword": "header=\"operation=invalid\" || header=\"CFL_Asynch\"",
         "type": "cms"
     },
     {
@@ -5527,7 +5627,7 @@
     },
     {
         "name": "【Jupyter-Notebook】",
-        "keyword": "(title=\"Jupyter Notebook\" || body=\"<div id=\\\"ipython-main-app\\\" class=\\\"container\\\">\" || body=\"<div id=\\\"ipython_notebook\\\" class=\\\"nav navbar-brand\\\">\" ) && title!=\"SOASTA DSWB\"",
+        "keyword": "(title=\"Jupyter Notebook\" || body=\"<div id=\\\"ipython-main-app\\\" class=\\\"container\\\">\" || body=\"<div id=\\\"ipython_notebook\\\" class=\\\"nav navbar-brand\\\">\") && title!=\"SOASTA DSWB\"",
         "type": "cms"
     },
     {
@@ -5822,7 +5922,7 @@
     },
     {
         "name": "【TP_LINK-Company Products】",
-        "keyword": "((body=\"http-equiv=\\\"refresh\\\" content=\\\"0; url=/webpages/login.html\\\"\" || header=\"realm=\\\"TP-LINK\" || header=\"Server: TP-LINK\") && body!=\"Server: couchdb\" ) || ((header=\"realm=\\\"TP-LINK\" || header=\"Server: TP-LINK\") && header!=\"drupal\")",
+        "keyword": "((body=\"http-equiv=\\\"refresh\\\" content=\\\"0; url=/webpages/login.html\\\"\" || header=\"realm=\\\"TP-LINK\" || header=\"Server: TP-LINK\") && body!=\"Server: couchdb\") || ((header=\"realm=\\\"TP-LINK\" || header=\"Server: TP-LINK\") && header!=\"drupal\")",
         "type": "cms"
     },
     {
@@ -6312,7 +6412,7 @@
     },
     {
         "name": "【Synology-NAS】",
-        "keyword": "(((body=\"content=\\\"DiskStation\" && body=\"nas\") || title=\"Synology&nbsp;DiskStation\" || title=\"Synology DiskStation\" || body=\"content=\\\"Synology DiskStation\" || body=\"content=\\\"Synology NAS 提供功能完整的网络存储\") && body!=\"Server: couchdb\" ) || (header=\"DiskStation\" && header!=\"couchdb\" && header!=\"Boa\" && header!=\"Apache,Tomcat,Jboss\") || (header=\"synology.com\" && body=\"syno-no-script\")",
+        "keyword": "(((body=\"content=\\\"DiskStation\" && body=\"nas\") || title=\"Synology&nbsp;DiskStation\" || title=\"Synology DiskStation\" || body=\"content=\\\"Synology DiskStation\" || body=\"content=\\\"Synology NAS 提供功能完整的网络存储\") && body!=\"Server: couchdb\") || (header=\"DiskStation\" && header!=\"couchdb\" && header!=\"Boa\" && header!=\"Apache,Tomcat,Jboss\") || (header=\"synology.com\" && body=\"syno-no-script\")",
         "type": "cms"
     },
     {
@@ -8197,7 +8297,7 @@
     },
     {
         "name": "【IPMOTOR-快客电邮】",
-        "keyword": "(body=\"window.location.replace(\\\"/cgi-bin/web2cgi/index.cgi\\\");\" && body!=\"<a\" ) || header=\"quarkmail server\" || body=\"<iframe src=\\\"/cgi-bin/web2cgi/index.cgi\\\" scrolling=\\\"no\\\" frameborder=\"",
+        "keyword": "(body=\"window.location.replace(\\\"/cgi-bin/web2cgi/index.cgi\\\");\" && body!=\"<a\") || header=\"quarkmail server\" || body=\"<iframe src=\\\"/cgi-bin/web2cgi/index.cgi\\\" scrolling=\\\"no\\\" frameborder=\"",
         "type": "cms"
     },
     {
@@ -8641,7 +8741,7 @@
         "type": "cms"
     },
     {
-        "name": "【AliyunOSS】",
+        "name": "【存在AliyunOSS服务】",
         "keyword": "header=\"Server: AliyunOSS\" || (header=\"X-Oss-Request-Id\" && header!=\"Server: AliyunOcm\") || header=\"Server: AliyunOSS\"",
         "type": "cms"
     },
@@ -8932,7 +9032,7 @@
     },
     {
         "name": "【致远-OA】",
-        "keyword": "icon_hash=\"165601673\" || title=\"致远A8+协同管理软件 V8.2SP1\"title=\"A6 V8.1SP1\" || title=\"致远A8+协同管理软件 V7.1SP1\" || title=\"协同管理软件 V7.0SP2\" || title=\"协同管理软件 V8.0SP2\" || title=\"致远\" || body=\"/seeyon/USER-DATA/IMAGES/LOGIN/login.gif\" || title=\"用友致远A\" || (body=\"/yyoa/\" && body!=\"本站内容均采集于\") || header=\"path=/yyoa\" || header=\"SY8044\" || (body=\"A6-V5企业版\" && body=\"seeyon\" && body=\"seeyonProductId\") || (body=\"/seeyon/common/\" && body=\"var _ctxpath = '/seeyon'\") || (body=\"A8-V5企业版\" && body=\"/seeyon/\") || header=\"Server: SY8044\" || header=\"Server: SY8045\" || header=\"Location: /seeyon/index.jsp\"",
+        "keyword": "icon_hash=\"165601673\" || body=\"/seeyon/common/all-min.css\" || title=\"致远A8+协同管理软件 V8.2SP1\"title=\"A6 V8.1SP1\" || title=\"致远A8+协同管理软件 V7.1SP1\" || title=\"协同管理软件 V7.0SP2\" || title=\"协同管理软件 V8.0SP2\" || title=\"致远\" || body=\"/seeyon/USER-DATA/IMAGES/LOGIN/login.gif\" || title=\"用友致远A\" || (body=\"/yyoa/\" && body!=\"本站内容均采集于\") || header=\"path=/yyoa\" || header=\"SY8044\" || (body=\"A6-V5企业版\" && body=\"seeyon\" && body=\"seeyonProductId\") || (body=\"/seeyon/common/\" && body=\"var _ctxpath = '/seeyon'\") || (body=\"A8-V5企业版\" && body=\"/seeyon/\") || header=\"Server: SY8044\" || header=\"Server: SY8045\" || header=\"Location: /seeyon/index.jsp\"",
         "type": "cms"
     },
     {
@@ -11197,7 +11297,7 @@
     },
     {
         "name": "【ASP.NET-RequestValidationMode】",
-        "keyword": "(header=\"HTTP/1.1 500\" && body=\"HttpRequestValidationException\" ) || body=\"Request Validation has detected a potentially dangerous client input value\"",
+        "keyword": "(header=\"HTTP/1.1 500\" && body=\"HttpRequestValidationException\") || body=\"Request Validation has detected a potentially dangerous client input value\"",
         "type": "cms"
     },
     {
@@ -11297,7 +11397,7 @@
     },
     {
         "name": "【Delivery application】",
-        "keyword": "(body=\"<title>交付应用</title>\" && body=\"src=\\\"http://res.wx.qq.com/open/js/jweixin\" )",
+        "keyword": "(body=\"<title>交付应用</title>\" && body=\"src=\\\"http://res.wx.qq.com/open/js/jweixin\")",
         "type": "cms"
     },
     {
@@ -11702,7 +11802,7 @@
     },
     {
         "name": "【UniView-video surveillance】",
-        "keyword": "(body=\"to=\\\"href_version_div\\\">版本<\" || body=\"gjs_oemtype = \\\"Uniview\") || (header=\"Unisvr \" && body=\"H3CMPP.Lang.DevManage\") || body=\"<!-- <embed src=\\\"null.wav\\\" loop=\" || body=\"var GJS_\" || header=\"Zhejiang Uniview Technologies Co.\" || title=\"ISC2500\" || title=\"公安图像应用平台\" || body=\"<iframe name=\\\"banner\\\" id=\\\"banner\\\" hidefocus=\\\"hideFocus\\\" marginwidth=\\\"0\\\" marginheight=\\\"0\\\" src=\\\" ../index.htm?clientipaddr=\" || (body=\"isun = true;\" && body=\"id=\\\"userName\\\" onkeypress=\\\"check_username(this)\\\" value=\\\"admin\") || (body=\"<a href=\\\"#\\\" onclick=\\\"popHelp(varHelpAncValue);\\\">\" && body=\"classid=\\\"clsid:0796C71F-AA80-4921-B6D1-AA4252D097AE\\\" id=\\\"recordManager_activeX\") || body=\"<meta http-equiv=\\\"refresh\\\" content=\\\"0; url=cgi-bin/main.cgi?webid=1\\\" />\" || header=\"uniser\" || title=\"国标配置系统\" || (body=\"recordManager_activeX\" && body=\"popHelp(varHelpAncValue);\" ) || (header=\"HIC6622X22-5CIR-H\" || header=\"HIC3121ES-DF36IR\" || header=\"HIC6621EX22I-5LA-IT\" || header=\"HIC6622I-HX30IR\" || header=\"HIC3121ES-DF60IR\") || header=\"Uniview login:\" || header=\"ISC2500-E login:\" || (body=\"cgi-bin/main.cgi?web_id=1&langinfo=-3\" && body=\"<FORM id=loginForm name=loginForm action=cgi-bin/main.cgi method=post >\") || title=\"ISC3500-\" || header=\"DVR102-16 login:\" || header=\"HIC6622X22-5CIR\" || header=\"HIC2221E-CF60IR\" || header=\"NVR208-32 login:\" || title=\"ISC3616\" || (body=\"<label for='autoLogin' class=\\\"login_autoLoginLabel\\\">\" && body=\"Text.VideoManageSystem\" && body=\"wanlanswitch\") || header=\"HC121\" || (body=\"GJS_PRODUCTTYPE\" && (body=\"uniview\" || body=\"宇视\"))",
+        "keyword": "(body=\"to=\\\"href_version_div\\\">版本<\" || body=\"gjs_oemtype = \\\"Uniview\") || (header=\"Unisvr \" && body=\"H3CMPP.Lang.DevManage\") || body=\"<!-- <embed src=\\\"null.wav\\\" loop=\" || body=\"var GJS_\" || header=\"Zhejiang Uniview Technologies Co.\" || title=\"ISC2500\" || title=\"公安图像应用平台\" || body=\"<iframe name=\\\"banner\\\" id=\\\"banner\\\" hidefocus=\\\"hideFocus\\\" marginwidth=\\\"0\\\" marginheight=\\\"0\\\" src=\\\" ../index.htm?clientipaddr=\" || (body=\"isun = true;\" && body=\"id=\\\"userName\\\" onkeypress=\\\"check_username(this)\\\" value=\\\"admin\") || (body=\"<a href=\\\"#\\\" onclick=\\\"popHelp(varHelpAncValue);\\\">\" && body=\"classid=\\\"clsid:0796C71F-AA80-4921-B6D1-AA4252D097AE\\\" id=\\\"recordManager_activeX\") || body=\"<meta http-equiv=\\\"refresh\\\" content=\\\"0; url=cgi-bin/main.cgi?webid=1\\\" />\" || header=\"uniser\" || title=\"国标配置系统\" || (body=\"recordManager_activeX\" && body=\"popHelp(varHelpAncValue);\") || (header=\"HIC6622X22-5CIR-H\" || header=\"HIC3121ES-DF36IR\" || header=\"HIC6621EX22I-5LA-IT\" || header=\"HIC6622I-HX30IR\" || header=\"HIC3121ES-DF60IR\") || header=\"Uniview login:\" || header=\"ISC2500-E login:\" || (body=\"cgi-bin/main.cgi?web_id=1&langinfo=-3\" && body=\"<FORM id=loginForm name=loginForm action=cgi-bin/main.cgi method=post >\") || title=\"ISC3500-\" || header=\"DVR102-16 login:\" || header=\"HIC6622X22-5CIR\" || header=\"HIC2221E-CF60IR\" || header=\"NVR208-32 login:\" || title=\"ISC3616\" || (body=\"<label for='autoLogin' class=\\\"login_autoLoginLabel\\\">\" && body=\"Text.VideoManageSystem\" && body=\"wanlanswitch\") || header=\"HC121\" || (body=\"GJS_PRODUCTTYPE\" && (body=\"uniview\" || body=\"宇视\"))",
         "type": "cms"
     },
     {
@@ -17503,7 +17603,7 @@
     {
         "name": "【TornadoServer】",
         "keyword": "header=\"Server: TornadoServer\" || header=\"Server: TornadoServer\"",
-        "type": "cms"
+        "type": "other"
     },
     {
         "name": "【TP-LINK-VPN】",
@@ -25577,7 +25677,7 @@
     },
     {
         "name": "【JeeSite】",
-        "keyword": "((body=\"jeesite.css\" || body=\"jeesite.js\") && body=\"jeesite.com\") || header=\"Set-Cookie: jeesite.session.id=\"",
+        "keyword": "title=\"JeeSite\" || body=\"http://www.jeesite.com\" || ((body=\"jeesite.css\" || body=\"jeesite.js\") && body=\"jeesite.com\") || header=\"Set-Cookie: jeesite.session.id=\"",
         "type": "cms"
     },
     {
@@ -28072,7 +28172,7 @@
     },
     {
         "name": "【HikVision-安防综合管理平台】",
-        "keyword": "body=\"<!--警示提示处-->\" || (body=\"<h1 class=\\\"logo\\\">安防综合管理平台</h1>\" && ( body=\"杭州海康威视系统技术有限公司 版权所有\" || body=\"serviceIP\" ) )",
+        "keyword": "body=\"<!--警示提示处-->\" || (body=\"<h1 class=\\\"logo\\\">安防综合管理平台</h1>\" && ( body=\"杭州海康威视系统技术有限公司 版权所有\" || body=\"serviceIP\") )",
         "type": "cms"
     },
     {
@@ -31472,7 +31572,7 @@
     },
     {
         "name": "【ZTE-telecommunications level high-end router】",
-        "keyword": "(header=\"T64E/T128\" && header=\"zte\" ) || (header=\"ZXR10_T128\")",
+        "keyword": "(header=\"T64E/T128\" && header=\"zte\") || (header=\"ZXR10_T128\")",
         "type": "cms"
     },
     {
@@ -32547,7 +32647,7 @@
     },
     {
         "name": "【大华-视频监控】",
-        "keyword": "(body=\"id=\\\"search_card_label\\\" for=\\\"search_PlateEnable\\\">车牌号码</label>\" && body!=\"Server: couchdb\" )|| header=\"Server: Dahua Rtsp\" || header=\"Server: DaHua DRS\" || header=\"Server: DaHua DRS\" || header=\"Server: Dahua Rtsp Server\" || header=\"Server: Dahua Rtsp Server\" || (header=\"ZheJiang Dahua Technology\" && header!=\"Content-Length: 59552\") || header=\"ZheJiang Dahua Technology\" || header=\"Basic realm=\\\"DahuaRtsp\" || (body=\"var g_isdeviceinited = true\" && body=\"widget/js/jquery.ui.widget.js\" && body=\"title::com_menu.title_setup\" && title!=\"WATASHI SERVICE\") || (body=\"css/playbackindex.css\" && body=\"class=\\\"J_content J_min_width\\\"\") || (body=\"J_sub_con J_loginbox\" && body=\"overflow:hidden;background-color\" && body=\"js/urlParser.js\") || (body=\"id=\\\"lab_loading\\\" class=\\\"J_load_p\" && body=\"src=\\\"/cap.js\\\"\" && body=\"'nav_margin').style.visibility = 'visible\" && title=\"WEB SERVICE\" && body!=\"/css/oem.css\" && body!=\"loginfoot\\\">WEB视频监控系统\" && body!=\"webApp.ability.getWebCap('showGb28181Client'\" && body!=\"class=\\\"ui-tip-container\\\" id=\\\"remark_modU\\\"\" && body!=\"class=\\\"login_inputbox ui-input fn-width163\\\"\") || body=\"tl(\\\"huazhonghua\\\")\" || (body=\"dhvideowhmode\" && body=\"platformHtm\" && body!=\"cpplus_bottom\" && body!=\"www.amcrest.com\" && body!=\"Amcrest\" && body!=\"interbras_font\" && body!=\"interbras_cloud\" && body!=\"interbrasCloud\")",
+        "keyword": "(body=\"id=\\\"search_card_label\\\" for=\\\"search_PlateEnable\\\">车牌号码</label>\" && body!=\"Server: couchdb\") || header=\"Server: Dahua Rtsp\" || header=\"Server: DaHua DRS\" || header=\"Server: DaHua DRS\" || header=\"Server: Dahua Rtsp Server\" || header=\"Server: Dahua Rtsp Server\" || (header=\"ZheJiang Dahua Technology\" && header!=\"Content-Length: 59552\") || header=\"ZheJiang Dahua Technology\" || header=\"Basic realm=\\\"DahuaRtsp\" || (body=\"var g_isdeviceinited = true\" && body=\"widget/js/jquery.ui.widget.js\" && body=\"title::com_menu.title_setup\" && title!=\"WATASHI SERVICE\") || (body=\"css/playbackindex.css\" && body=\"class=\\\"J_content J_min_width\\\"\") || (body=\"J_sub_con J_loginbox\" && body=\"overflow:hidden;background-color\" && body=\"js/urlParser.js\") || (body=\"id=\\\"lab_loading\\\" class=\\\"J_load_p\" && body=\"src=\\\"/cap.js\\\"\" && body=\"'nav_margin').style.visibility = 'visible\" && title=\"WEB SERVICE\" && body!=\"/css/oem.css\" && body!=\"loginfoot\\\">WEB视频监控系统\" && body!=\"webApp.ability.getWebCap('showGb28181Client'\" && body!=\"class=\\\"ui-tip-container\\\" id=\\\"remark_modU\\\"\" && body!=\"class=\\\"login_inputbox ui-input fn-width163\\\"\") || body=\"tl(\\\"huazhonghua\\\")\" || (body=\"dhvideowhmode\" && body=\"platformHtm\" && body!=\"cpplus_bottom\" && body!=\"www.amcrest.com\" && body!=\"Amcrest\" && body!=\"interbras_font\" && body!=\"interbras_cloud\" && body!=\"interbrasCloud\")",
         "type": "cms"
     },
     {
@@ -34152,7 +34252,7 @@
     },
     {
         "name": "【WordPress】",
-        "keyword": "(body=\"name=\\\"generator\\\" content=\\\"WordPress \" || (header=\"X-Pingback\" && header=\"/xmlrpc.php\" && body=\"/wp-includes/\" ) ) || header=\"wordpress_test_cookie\" || header=\"wordpress_test_cookie\"",
+        "keyword": "body=\"wp-importmap\" || (body=\"name=\\\"generator\\\" content=\\\"WordPress \" || (header=\"X-Pingback\" && header=\"/xmlrpc.php\" && body=\"/wp-includes/\")) || header=\"wordpress_test_cookie\" || header=\"wordpress_test_cookie\"",
         "type": "cms"
     },
     {
@@ -36667,7 +36767,7 @@
     },
     {
         "name": "【venustech-Tianqing WAG】",
-        "keyword": "title=\"天清WAG\" || title=\"Venusense WAF\" || (header=\"vwphpsessid=\" && title!=\"网御WAF\" )",
+        "keyword": "title=\"天清WAG\" || title=\"Venusense WAF\" || (header=\"vwphpsessid=\" && title!=\"网御WAF\")",
         "type": "cms"
     },
     {
@@ -38732,7 +38832,7 @@
     },
     {
         "name": "【JEECG】",
-        "keyword": "body=\"/sys/common/pdf/pdfPreviewIframe\" || body=\"积木报表\" || body=\"jeecg\" || body=\"window._CONFIG['imgDomainURL'] = 'http://localhost:8080/jeecg-boot/\" || body=\"jeecg-boot\" || body=\"/cdn/babel-polyfill/polyfill_7_2_5.js\" || title=\"Jeecg-Boot 企业级快速开发平台\" || title=\"Jeecg 快速开发平台\" || body=\"'http://fileview.jeecg.com/onlinePreview'\"",
+        "keyword": "body=\"https://hm.baidu.com/hm.js?0febd9e3cacb3f627ddac64d52caac39\" || title=\"JeecgBoot 企业级低代码平台\" || body=\"/sys/common/pdf/pdfPreviewIframe\" || body=\"积木报表\" || body=\"jeecg\" || body=\"window._CONFIG['imgDomainURL'] = 'http://localhost:8080/jeecg-boot/\" || body=\"jeecg-boot\" || body=\"/cdn/babel-polyfill/polyfill_7_2_5.js\" || title=\"Jeecg-Boot 企业级快速开发平台\" || title=\"Jeecg 快速开发平台\" || body=\"'http://fileview.jeecg.com/onlinePreview'\"",
         "type": "cms"
     },
     {
@@ -40191,7 +40291,7 @@
         "type": "cms"
     },
     {
-        "name": "【Jupyter Notebook】",
+        "name": "【Jupyter-Notebook】",
         "keyword": "icon_hash=\"-895963602\"",
         "type": "cms"
     },

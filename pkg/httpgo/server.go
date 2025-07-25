@@ -1,12 +1,15 @@
 package httpgo
 
 import (
+	"compress/gzip"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -21,7 +24,7 @@ func ServeDirectoryWithAuth(dir, username, password string, port int) error {
 	fs := http.FileServer(http.Dir(dir))
 
 	// 使用 BasicAuth 和 Logging 中间件保护和记录文件服务器
-	protectedFS := BasicAuth(LoggingMiddleware(fs), username, password)
+	protectedFS := BasicAuth(LoggingMiddleware(GzipMiddleware(fs)), username, password)
 
 	// 启动 Web 服务器
 	addr := ":" + strconv.Itoa(port)
@@ -59,6 +62,36 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 			lrw.statusCode,
 			time.Since(start))
 	})
+}
+
+// gzip
+// GzipMiddleware 中间件
+func GzipMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
+			next.ServeHTTP(w, r)
+			return
+		}
+
+		// 设置 gzip writer
+		gzw := gzip.NewWriter(w)
+		defer gzw.Close()
+
+		w.Header().Set("Content-Encoding", "gzip")
+		w.Header().Del("Content-Length") // 压缩后长度不可预知
+
+		grw := &gzipResponseWriter{Writer: gzw, ResponseWriter: w}
+		next.ServeHTTP(grw, r)
+	})
+}
+
+type gzipResponseWriter struct {
+	io.Writer
+	http.ResponseWriter
+}
+
+func (w *gzipResponseWriter) Write(b []byte) (int, error) {
+	return w.Writer.Write(b)
 }
 
 // loggingResponseWriter 是一个包装 ResponseWriter 的结构体，用于捕获响应状态码

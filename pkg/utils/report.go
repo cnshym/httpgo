@@ -17,39 +17,435 @@ type URLFingerprint struct {
 	Screenshot string
 }
 
-// HTML 模板
-//var HtmlHeaderA = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>httpgo Fingerprint Report</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f4f4f4;\n            color: #333;\n        }\n        h1 {\n            text-align: center;\n            margin: 20px 0;\n            color: #444;\n        }\n        table {\n            width: 90%;\n            margin: 20px auto;\n            border-collapse: collapse;\n            background: #fff;\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n        }\n        table, th, td {\n            border: 1px solid #ddd;\n        }\n        th, td {\n            padding: 12px;\n            text-align: left;\n        }\n        th {\n            background-color: #f8f8f8;\n            color: #555;\n        }\n        .container {\n            display: flex;\n            justify-content: space-between;\n            align-items: flex-start;\n            padding: 10px;\n        }\n        .left {\n            flex: 1;\n            margin-right: 20px;\n            background: #fafafa;\n            padding: 15px;\n            border-radius: 8px;\n            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n            max-width: 50%;\n        }\n        .right {\n            flex: 1;\n            max-width: 50%;\n            text-align: center;\n        }\n        .right img {\n            width: 40%;\n            height: auto;\n            border-radius: 8px;\n            cursor: pointer;\n            transition: opacity 0.3s;\n        }\n        .right img:hover {\n            opacity: 0.8;\n        }\n        .modal {\n            display: none;\n            position: fixed;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            background-color: rgba(0, 0, 0, 0.8);\n            align-items: center;\n            justify-content: center;\n            z-index: 1000;\n        }\n        .modal-content {\n            max-width: 90%;\n            max-height: 90%;\n            position: relative;\n        }\n        .modal-content img {\n            width: 100%;\n            height: auto;\n            border: 5px solid #fff;\n            border-radius: 8px;\n        }\n        .modal-close {\n            position: absolute;\n            top: 20px;\n            right: 20px;\n            font-size: 2rem;\n            color: #fff;\n            cursor: pointer;\n            transition: color 0.3s;\n        }\n        .modal-close:hover {\n            color: #ddd;\n        }\n        .cms-info {\n            color: red;\n        }\n        .other-info {\n            color: green;\n        }\n        .stats {\n            margin: 20px auto;\n            width: 90%;\n            padding: 15px;\n            background: #fafafa;\n            border-radius: 8px;\n            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n        }\n        .stats h2 {\n            margin-top: 0;\n            font-size: 1.2rem; /* 调整大小 */\n        }\n        .stats ul {\n            list-style: none;\n            padding: 0;\n            margin: 0;\n        }\n        .stats ul li {\n            margin: 5px 0;\n            font-size: 1rem; /* 调整大小 */\n        }\n        .button-group {\n            display: flex;\n            flex-wrap: wrap;\n            /* justify-content: center; */\n            margin: 20px 0;\n        }\n        .button-group button {\n            background-color: #007bff;\n            color: white;\n            border: none;\n            padding: 6px 12px; /* 减少内边距 */\n            margin: 4px; /* 减少外边距 */\n            border-radius: 4px; /* 减小圆角 */\n            cursor: pointer;\n            transition: background-color 0.3s;\n            font-size: 0.875rem; /* 调整字体大小 */\n        }\n\n        .button-group button:hover {\n            background-color: #0056b3;\n        }\n\n        #scroll-to-top {\n            position: fixed;\n            bottom: 20px;\n            right: 20px;\n            background-color: #007bff;\n            color: white;\n            border: none;\n            border-radius: 50%;\n            width: 40px; /* 减少宽度 */\n            height: 40px; /* 减少高度 */\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            cursor: pointer;\n            font-size: 18px; /* 调整字体大小 */\n            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n            transition: background-color 0.3s, box-shadow 0.3s;\n        }\n        \n        #scroll-to-top:hover {\n            background-color: #0056b3;\n            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);\n        }\n\n    </style>\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function() {\n        const scrollToTopButton = document.getElementById(\"scroll-to-top\");\n                \n        scrollToTopButton.addEventListener(\"click\", function() {\n            window.scrollTo({\n                top: 0,\n                behavior: \"smooth\"\n            });\n        });\n        \n        // Show or hide the button based on scroll position\n        window.addEventListener(\"scroll\", function() {\n            if (window.scrollY > 300) {\n                scrollToTopButton.style.display = \"flex\";\n            } else {\n                scrollToTopButton.style.display = \"none\";\n            }\n        });\n        });\n\n        document.addEventListener(\"DOMContentLoaded\", function() {\n            let originalData = [];\n\n            function openModal(src) {\n                var modal = document.getElementById(\"modal\");\n                var modalImg = document.getElementById(\"modal-img\");\n                modal.style.display = \"flex\";\n                modalImg.src = src;\n            }\n\n            function closeModal(event) {\n                if (event.target === document.getElementById(\"modal\")) {\n                    document.getElementById(\"modal\").style.display = \"none\";\n                }\n            }\n\n            function updateStats(data) {\n                const cmsCount = {};\n                const otherCount = {};\n\n                data.forEach(item => {\n                    item.CmsList.split(';').forEach(cms => {\n                        cms = cms.trim();\n                        if (cms) {\n                            cmsCount[cms] = (cmsCount[cms] || 0) + 1;\n                        }\n                    });\n\n                    item.OtherList.split(';').forEach(other => {\n                        other = other.trim();\n                        if (other) {\n                            otherCount[other] = (otherCount[other] || 0) + 1;\n                        }\n                    });\n                });\n\n                const cmsStats = Object.entries(cmsCount).sort((a, b) => b[1] - a[1])\n                    .map(([key, value]) => `<button class=\"cms-item\" data-type=\"cms\" data-value=\"${key}\">${key}: ${value}</button>`)\n                    .join(”);\n                document.getElementById('cms-stats').innerHTML = `<h2>CMS Fingerprint Information</h2><div class=\"button-group\">${cmsStats}</div>`;\n\n                const otherStats = Object.entries(otherCount).sort((a, b) => b[1] - a[1])\n                    .map(([key, value]) => `<button class=\"other-item\" data-type=\"other\" data-value=\"${key}\">${key}: ${value}</button>`)\n                    .join(”);\n                document.getElementById('other-stats').innerHTML = `<br><h2>OTHER Fingerprint Information</h2><div class=\"button-group\">${otherStats}</div>`;\n\n                document.getElementById('all-stats').innerHTML = `<br><h2>All Fingerprint Information</h2><div class=\"button-group\"><button id=\"btn-all\">ALL</button></div>`;\n            }\n\n            function filterData(data, type, value) {\n                return data.filter(item => {\n                    if (type === 'cms') {\n                        return item.CmsList.split(';').map(cms => cms.trim()).includes(value);\n                    } else if (type === 'other') {\n                        return item.OtherList.split(';').map(other => other.trim()).includes(value);\n                    }\n                    return false;\n                });\n            }\n\n            function updateTable(data) {\n                const tableBody = document.querySelector(\"tbody\");\n                tableBody.innerHTML = ”;\n                data.forEach(item => {\n                    const row = document.createElement('tr');\n                    row.innerHTML = `\n                        <td class=\"container\">\n                            <div class=\"left\">\n                                <p><strong>目标:</strong> <a href=\"${item.Url}\" target=\"_blank\">${item.Url}</a></p>\n                                <p><strong>状态码:</strong> ${item.StatusCode}</p>\n                                <p><strong>标题:</strong> ${item.Title}</p>\n                                <p><strong>CMS指纹信息:</strong> <span class=\"cms-info\">${item.CmsList}</span></p>\n                                <p><strong>OTHER信息:</strong> <span class=\"other-info\">${item.OtherList}</span></p>\n                            </div>\n                            <div class=\"right\">\n                                ${item.Screenshot ? `<img src=\"${item.Screenshot}\" alt=\"Screenshot\" onclick=\"openModal('${item.Screenshot}')\" loading=\"lazy\">` : `<p>No Screenshot</p>`}\n                            </div>\n                        </td>\n                    `;\n                    tableBody.appendChild(row);\n                });\n            }\n\n            function updateAllButton(data) {\n                const allCount = data.length;\n                const allButton = document.getElementById('btn-all');\n                allButton.textContent = `ALL (${allCount})`;\n            }\n\n            document.addEventListener(\"click\", function(event) {\n                if (event.target.classList.contains('cms-item') || event.target.classList.contains('other-item')) {\n                    const type = event.target.getAttribute('data-type');\n                    const value = event.target.getAttribute('data-value');\n                    const filteredData = filterData(originalData, type, value);\n                    updateTable(filteredData);\n                } else if (event.target.id === 'btn-all') {\n                    updateTable(originalData);\n                }\n            });\n\n            fetch('"
-//var HtmlHeaderB = "')\n                .then(response => {\n                    if (!response.ok) {\n                        throw new Error('Network response was not ok');\n                    }\n                    return response.json();\n                })\n                .then(data => {\n                    originalData = data;\n                    updateStats(data);\n                    updateTable(data);\n                    updateAllButton(data);\n                })\n                .catch(error => console.error('Error loading JSON data:', error));\n        });\n    </script>\n</head>\n<body>\n    <h1>URL Fingerprint Report</h1>\n    <div class=\"stats\">\n        <div id=\"cms-stats\"></div>\n        <div id=\"other-stats\"></div>\n        <div id=\"all-stats\"></div>\n    </div>\n    <div id=\"modal\" class=\"modal\">\n        <div class=\"modal-content\">\n            <span class=\"modal-close\">&times;</span>\n            <img id=\"modal-img\" src=\"\" alt=\"Screenshot\">\n        </div>\n    </div>\n    <table>\n        <thead>\n            <tr>\n                <th>Details</th>\n            </tr>\n        </thead>\n        <tbody>\n            <!-- Data rows will be inserted here by JavaScript -->\n        </tbody>\n    </table>\n    <button id=\"scroll-to-top\" title=\"Go to Top\">&#8679;</button>\n</body>\n</html>\n"
+var HtmlHeaderA = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>httpgo Fingerprint Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #444;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f8f8;
+            color: #555;
+            font-size: 1rem;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 10px;
+            gap: 10px;
+        }
+        .target {
+            flex: 1;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 48%;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .target-info {
+            flex: 1;
+            max-width: calc(100% - 170px); /* 留出图片宽度和间距 */
+        }
+        .target-info p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        .target-img {
+            flex: 0 0 150px;
+            text-align: center;
+        }
+        .target-img img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .target-img img:hover {
+            opacity: 0.8;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border: 5px solid #fff;
+            border-radius: 8px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .modal-close:hover {
+            color: #ddd;
+        }
+        .cms-info {
+            color: red;
+        }
+        .other-info {
+            color: green;
+        }
+        .stats {
+            margin: 20px auto;
+            width: 90%;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .stats h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+        }
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        .button-group button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            margin: 4px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.875rem;
+        }
+        .button-group button:hover {
+            background-color: #0056b3;
+        }
+        #scroll-to-top, #copy-urls {
+            position: fixed;
+            bottom: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        #scroll-to-top {
+            right: 20px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            display: none;
+        }
+        #copy-urls {
+            right: 70px;
+        }
+        #scroll-to-top:hover, #copy-urls:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const scrollToTopButton = document.getElementById("scroll-to-top");
+            const copyUrlsButton = document.getElementById("copy-urls");
+            const modal = document.getElementById("modal");
+            const modalImg = document.getElementById("modal-img");
+            const modalClose = document.querySelector(".modal-close");
+            let originalData = [];
+            let currentData = [];
 
-var HtmlHeaderA = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>httpgo Fingerprint Report</title>\n    <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f4f4f4;\n            color: #333;\n        }\n        h1 {\n            text-align: center;\n            margin: 20px 0;\n            color: #444;\n        }\n        table {\n            width: 90%;\n            margin: 20px auto;\n            border-collapse: collapse;\n            background: #fff;\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n        }\n        table, th, td {\n            border: 1px solid #ddd;\n        }\n        th, td {\n            padding: 12px;\n            text-align: left;\n        }\n        th {\n            background-color: #f8f8f8;\n            color: #555;\n        }\n        .container {\n            display: flex;\n            justify-content: space-between;\n            align-items: flex-start;\n            padding: 10px;\n        }\n        .left {\n            flex: 1;\n            margin-right: 20px;\n            background: #fafafa;\n            padding: 15px;\n            border-radius: 8px;\n            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n            max-width: 50%;\n        }\n        .right {\n            flex: 1;\n            max-width: 50%;\n            text-align: center;\n        }\n        .right img {\n            width: 40%;\n            height: auto;\n            border-radius: 8px;\n            cursor: pointer;\n            transition: opacity 0.3s;\n        }\n        .right img:hover {\n            opacity: 0.8;\n        }\n        .modal {\n            display: none;\n            position: fixed;\n            top: 0;\n            left: 0;\n            width: 100%;\n            height: 100%;\n            background-color: rgba(0, 0, 0, 0.8);\n            align-items: center;\n            justify-content: center;\n            z-index: 1000;\n        }\n        .modal-content {\n            max-width: 90%;\n            max-height: 90%;\n            position: relative;\n        }\n        .modal-content img {\n            width: 100%;\n            height: auto;\n            border: 5px solid #fff;\n            border-radius: 8px;\n        }\n        .modal-close {\n            position: absolute;\n            top: 20px;\n            right: 20px;\n            font-size: 2rem;\n            color: #fff;\n            cursor: pointer;\n            transition: color 0.3s;\n        }\n        .modal-close:hover {\n            color: #ddd;\n        }\n        .cms-info {\n            color: red;\n        }\n        .other-info {\n            color: green;\n        }\n        .stats {\n            margin: 20px auto;\n            width: 90%;\n            padding: 15px;\n            background: #fafafa;\n            border-radius: 8px;\n            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);\n        }\n        .stats h2 {\n            margin-top: 0;\n            font-size: 1.2rem; /* 调整大小 */\n        }\n        .stats ul {\n            list-style: none;\n            padding: 0;\n            margin: 0;\n        }\n        .stats ul li {\n            margin: 5px 0;\n            font-size: 1rem; /* 调整大小 */\n        }\n        .button-group {\n            display: flex;\n            flex-wrap: wrap;\n            /* justify-content: center; */\n            margin: 20px 0;\n        }\n        .button-group button {\n            background-color: #007bff;\n            color: white;\n            border: none;\n            padding: 6px 12px; /* 减少内边距 */\n            margin: 4px; /* 减少外边距 */\n            border-radius: 4px; /* 减小圆角 */\n            cursor: pointer;\n            transition: background-color 0.3s;\n            font-size: 0.875rem; /* 调整字体大小 */\n        }\n\n        .button-group button:hover {\n            background-color: #0056b3;\n        }\n\n        #scroll-to-top {\n            position: fixed;\n            bottom: 20px;\n            right: 20px;\n            background-color: #007bff;\n            color: white;\n            border: none;\n            border-radius: 50%;\n            width: 40px; /* 减少宽度 */\n            height: 40px; /* 减少高度 */\n            display: flex;\n            align-items: center;\n            justify-content: center;\n            cursor: pointer;\n            font-size: 18px; /* 调整字体大小 */\n            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n            transition: background-color 0.3s, box-shadow 0.3s;\n        }\n        \n        #scroll-to-top:hover {\n            background-color: #0056b3;\n            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);\n        }\n\n    </style>\n    <script>\n        document.addEventListener(\"DOMContentLoaded\", function() {\n        const scrollToTopButton = document.getElementById(\"scroll-to-top\");\n                \n        scrollToTopButton.addEventListener(\"click\", function() {\n            window.scrollTo({\n                top: 0,\n                behavior: \"smooth\"\n            });\n        });\n        \n        // Show or hide the button based on scroll position\n        window.addEventListener(\"scroll\", function() {\n            if (window.scrollY > 300) {\n                scrollToTopButton.style.display = \"flex\";\n            } else {\n                scrollToTopButton.style.display = \"none\";\n            }\n        });\n        });\n\n        document.addEventListener(\"DOMContentLoaded\", function() {\n            let originalData = [];\n\n            function openModal(src) {\n                var modal = document.getElementById(\"modal\");\n                var modalImg = document.getElementById(\"modal-img\");\n                modal.style.display = \"flex\";\n                modalImg.src = src;\n            }\n\n            function closeModal(event) {\n                if (event.target === document.getElementById(\"modal\")) {\n                    document.getElementById(\"modal\").style.display = \"none\";\n                }\n            }\n\n            function updateStats(data) {\n                const cmsCount = {};\n                const otherCount = {};\n                const statusCodeCount = {};\n\n                data.forEach(item => {\n                    item.CmsList.split(';').forEach(cms => {\n                        cms = cms.trim();\n                        if (cms) {\n                            cmsCount[cms] = (cmsCount[cms] || 0) + 1;\n                        }\n                    });\n\n                    item.OtherList.split(';').forEach(other => {\n                        other = other.trim();\n                        if (other) {\n                            otherCount[other] = (otherCount[other] || 0) + 1;\n                        }\n                    });\n\n                    const statusCode = item.StatusCode;\n                    if (statusCode) {\n                        statusCodeCount[statusCode] = (statusCodeCount[statusCode] || 0) + 1;\n                    }\n                });\n\n                const cmsStats = Object.entries(cmsCount).sort((a, b) => b[1] - a[1])\n                    .map(([key, value]) => `<button class=\"cms-item\" data-type=\"cms\" data-value=\"${key}\">${key}: ${value}</button>`)\n                    .join('');\n                document.getElementById('cms-stats').innerHTML = `<h2>CMS Fingerprint Information</h2><div class=\"button-group\">${cmsStats}</div>`;\n\n                const otherStats = Object.entries(otherCount).sort((a, b) => b[1] - a[1])\n                    .map(([key, value]) => `<button class=\"other-item\" data-type=\"other\" data-value=\"${key}\">${key}: ${value}</button>`)\n                    .join('');\n                document.getElementById('other-stats').innerHTML = `<br><h2>Other Fingerprint Information</h2><div class=\"button-group\">${otherStats}</div>`;\n\n                const statusCodeStats = Object.entries(statusCodeCount).sort((a, b) => b[1] - a[1])\n                    .map(([key, value]) => `<button class=\"status-code-item\" data-type=\"status-code\" data-value=\"${key}\">${key}: ${value}</button>`)\n                    .join('');\n                document.getElementById('status-code-stats').innerHTML = `<br><h2>Status Code Information</h2><div class=\"button-group\">${statusCodeStats}</div>`;\n\n                document.getElementById('all-stats').innerHTML = `<br><h2>All Fingerprint Information</h2><div class=\"button-group\"><button id=\"btn-all\">ALL</button></div>`;\n            }\n\n            function filterData(data, type, value) {\n                return data.filter(item => {\n                    if (type === 'cms') {\n                        return item.CmsList.split(';').map(cms => cms.trim()).includes(value);\n                    } else if (type === 'other') {\n                        return item.OtherList.split(';').map(other => other.trim()).includes(value);\n                    } else if (type === 'status-code') {\n                        return item.StatusCode.toString() === value;\n                    }\n                    return false;\n                });\n            }\n\n            function updateTable(data) {\n                const tableBody = document.querySelector(\"tbody\");\n                tableBody.innerHTML = '';\n                data.forEach(item => {\n                    const row = document.createElement('tr');\n                    row.innerHTML = `\n                        <td class=\"container\">\n                            <div class=\"left\">\n                                <p><strong>目标:</strong> <a href=\"${item.Url}\" target=\"_blank\">${item.Url}</a></p>\n                                <p><strong>状态码:</strong> ${item.StatusCode}</p>\n                                <p><strong>标题:</strong> ${item.Title}</p>\n                                <p><strong>CMS指纹信息:</strong> <span class=\"cms-info\">${item.CmsList}</span></p>\n                                <p><strong>OTHER信息:</strong> <span class=\"other-info\">${item.OtherList}</span></p>\n                            </div>\n                            <div class=\"right\">\n                                ${item.Screenshot ? `<img src=\"${item.Screenshot}\" alt=\"Screenshot\" onclick=\"openModal('${item.Screenshot}')\" loading=\"lazy\">` : `<p>No Screenshot</p>`}\n                            </div>\n                        </td>\n                    `;\n                    tableBody.appendChild(row);\n                });\n            }\n\n            function updateAllButton(data) {\n                const allCount = data.length;\n                const allButton = document.getElementById('btn-all');\n                allButton.textContent = `ALL (${allCount})`;\n            }\n\n            document.addEventListener(\"click\", function(event) {\n                if (event.target.classList.contains('cms-item') || event.target.classList.contains('other-item') || event.target.classList.contains('status-code-item')) {\n                    const type = event.target.getAttribute('data-type');\n                    const value = event.target.getAttribute('data-value');\n                    const filteredData = filterData(originalData, type, value);\n                    updateTable(filteredData);\n                } else if (event.target.id === 'btn-all') {\n                    updateTable(originalData);\n                }\n            });\n\n            fetch('"
-var HtmlHeaderB = "')\n                .then(response => {\n                    if (!response.ok) {\n                        throw new Error('Network response was not ok');\n                    }\n                    return response.json();\n                })\n                .then(data => {\n                    originalData = data;\n                    updateStats(data);\n                    updateTable(data);\n                    updateAllButton(data);\n                })\n                .catch(error => console.error('Error loading JSON data:', error));\n        });\n    </script>\n</head>\n<body>\n    <h1>URL Fingerprint Report</h1>\n    <div class=\"stats\">\n        <div id=\"cms-stats\"></div>\n        <div id=\"other-stats\"></div>\n        <div id=\"status-code-stats\"></div>\n        <div id=\"all-stats\"></div>\n    </div>\n    <div id=\"modal\" class=\"modal\">\n        <div class=\"modal-content\">\n            <span class=\"modal-close\">&times;</span>\n            <img id=\"modal-img\" src=\"\" alt=\"Screenshot\">\n        </div>\n    </div>\n    <table>\n        <thead>\n            <tr>\n                <th>Details</th>\n            </tr>\n        </thead>\n        <tbody>\n            <!-- Data rows will be inserted here by JavaScript -->\n        </tbody>\n    </table>\n    <button id=\"scroll-to-top\" title=\"Go to Top\">&#8679;</button>\n</body>\n</html>\n"
+            // Scroll to top
+            scrollToTopButton.addEventListener("click", function() {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+            window.addEventListener("scroll", function() {
+                scrollToTopButton.style.display = window.scrollY > 300 ? "flex" : "none";
+            });
+
+            // Modal functions
+            function openModal(src) {
+                modal.style.display = "flex";
+                modalImg.src = src;
+            }
+
+            function closeModal() {
+                modal.style.display = "none";
+            }
+
+            modalClose.addEventListener("click", closeModal);
+            modal.addEventListener("click", function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener("click", function(event) {
+                if (event.target.tagName === "IMG" && event.target.closest(".target-img")) {
+                    openModal(event.target.src);
+                }
+            });
+
+            // Copy URLs to clipboard
+            function copyURLs() {
+                if (currentData.length === 0) {
+                    alert("没有可复制的 URL！");
+                    return;
+                }
+                const urls = currentData.map(item => item.Url).join("\n");
+                // 优先使用 navigator.clipboard
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(urls).then(() => {
+                        const originalText = copyUrlsButton.textContent;
+                        copyUrlsButton.textContent = "已复制!";
+                        setTimeout(() => {
+                            copyUrlsButton.textContent = originalText;
+                        }, 2000);
+                    }).catch(err => {
+                        console.error("Clipboard API 复制失败:", err);
+                        fallbackCopy(urls);
+                    });
+                } else {
+                    fallbackCopy(urls);
+                }
+            }
+
+            // 备用复制方法
+            function fallbackCopy(text) {
+                try {
+                    const textarea = document.createElement("textarea");
+                    textarea.value = text;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand("copy");
+                    document.body.removeChild(textarea);
+                    const originalText = copyUrlsButton.textContent;
+                    copyUrlsButton.textContent = "已复制!";
+                    setTimeout(() => {
+                        copyUrlsButton.textContent = originalText;
+                    }, 2000);
+                } catch (err) {
+                    console.error("备用复制失败:", err);
+                    alert("复制失败，请检查浏览器权限或手动复制！");
+                }
+            }
+
+            copyUrlsButton.addEventListener("click", copyURLs);
+
+            // Update statistics
+            function updateStats(data) {
+                const cmsCount = {};
+                const otherCount = {};
+                const statusCodeCount = {};
+
+                data.forEach(item => {
+                    item.CmsList.split(";").forEach(cms => {
+                        cms = cms.trim();
+                        if (cms) cmsCount[cms] = (cmsCount[cms] || 0) + 1;
+                    });
+                    item.OtherList.split(";").forEach(other => {
+                        other = other.trim();
+                        if (other) otherCount[other] = (otherCount[other] || 0) + 1;
+                    });
+                    const statusCode = item.StatusCode;
+                    if (statusCode) statusCodeCount[statusCode] = (statusCodeCount[statusCode] || 0) + 1;
+                });
+
+                const cmsStats = Object.entries(cmsCount).sort((a, b) => b[1] - a[1])
+                    .map(([key, value]) => "<button class=\"cms-item\" data-type=\"cms\" data-value=\"" + key + "\">" + key + ": " + value + "</button>")
+                    .join("");
+                document.getElementById("cms-stats").innerHTML = "<h2>CMS Fingerprint Information</h2><div class=\"button-group\">" + cmsStats + "</div>";
+
+                const otherStats = Object.entries(otherCount).sort((a, b) => b[1] - a[1])
+                    .map(([key, value]) => "<button class=\"other-item\" data-type=\"other\" data-value=\"" + key + "\">" + key + ": " + value + "</button>")
+                    .join("");
+                document.getElementById("other-stats").innerHTML = "<br><h2>Other Fingerprint Information</h2><div class=\"button-group\">" + otherStats + "</div>";
+
+                const statusCodeStats = Object.entries(statusCodeCount).sort((a, b) => b[1] - a[1])
+                    .map(([key, value]) => "<button class=\"status-code-item\" data-type=\"status-code\" data-value=\"" + key + "\">" + key + ": " + value + "</button>")
+                    .join("");
+                document.getElementById("status-code-stats").innerHTML = "<br><h2>Status Code Information</h2><div class=\"button-group\">" + statusCodeStats + "</div>";
+
+                const allCount = data.length;
+                document.getElementById("all-stats").innerHTML = "<br><h2>All Fingerprint Information</h2><div class=\"button-group\"><button id=\"btn-all\">ALL (" + allCount + ")</button></div>";
+            }
+
+            // Filter data
+            function filterData(data, type, value) {
+                return data.filter(item => {
+                    if (type === "cms") return item.CmsList.split(";").map(cms => cms.trim()).includes(value);
+                    if (type === "other") return item.OtherList.split(";").map(other => other.trim()).includes(value);
+                    if (type === "status-code") return item.StatusCode.toString() === value;
+                    return false;
+                });
+            }
+
+            // Update table
+            function updateTable(data) {
+                currentData = data; // 跟踪当前显示的数据
+                const tableBody = document.querySelector("tbody");
+                tableBody.innerHTML = "";
+                for (let i = 0; i < data.length; i += 2) {
+                    const leftItem = data[i];
+                    const rightItem = data[i + 1] || {};
+                    const row = document.createElement("tr");
+                    row.innerHTML = "<td class=\"container\">" +
+                        "<div class=\"target\">" +
+                        (leftItem ? "<div class=\"target-info\">" +
+                        "<p><strong>目标:</strong> <a href=\"" + leftItem.Url + "\" target=\"_blank\">" + leftItem.Url + "</a></p>" +
+                        "<p><strong>状态码:</strong> " + leftItem.StatusCode + "</p>" +
+                        "<p><strong>标题:</strong> " + leftItem.Title + "</p>" +
+                        "<p><strong>CMS指纹信息:</strong> <span class=\"cms-info\">" + leftItem.CmsList + "</span></p>" +
+                        "<p><strong>OTHER信息:</strong> <span class=\"other-info\">" + leftItem.OtherList + "</span></p>" +
+                        "</div><div class=\"target-img\">" +
+                        (leftItem.Screenshot ? "<img src=\"" + leftItem.Screenshot + "\" alt=\"Screenshot\" loading=\"lazy\">" : "<p>无截图</p>") +
+                        "</div>" : "<p>没有更多数据了</p>") +
+                        "</div>" +
+                        "<div class=\"target\">" +
+                        (rightItem.Url ? "<div class=\"target-info\">" +
+                        "<p><strong>目标:</strong> <a href=\"" + rightItem.Url + "\" target=\"_blank\">" + rightItem.Url + "</a></p>" +
+                        "<p><strong>状态码:</strong> " + (rightItem.StatusCode || "") + "</p>" +
+                        "<p><strong>标题:</strong> " + (rightItem.Title || "") + "</p>" +
+                        "<p><strong>CMS指纹信息:</strong> <span class=\"cms-info\">" + (rightItem.CmsList || "") + "</span></p>" +
+                        "<p><strong>OTHER信息:</strong> <span class=\"other-info\">" + (rightItem.OtherList || "") + "</span></p>" +
+                        "</div><div class=\"target-img\">" +
+                        (rightItem.Screenshot ? "<img src=\"" + rightItem.Screenshot + "\" alt=\"Screenshot\" loading=\"lazy\">" : "<p>无截图</p>") +
+                        "</div>" : "<p>没有更多数据了</p>") +
+                        "</div></td>";
+                    tableBody.appendChild(row);
+                }
+            }
+
+            // Filter button click handler
+            document.addEventListener("click", function(event) {
+                if (event.target.classList.contains("cms-item") || event.target.classList.contains("other-item") || event.target.classList.contains("status-code-item")) {
+                    const type = event.target.getAttribute("data-type");
+                    const value = event.target.getAttribute("data-value");
+                    updateTable(filterData(originalData, type, value));
+                } else if (event.target.id === "btn-all") {
+                    updateTable(originalData);
+                }
+            });
+
+            // Fetch JSON data
+            fetch("`
+
+var HtmlHeaderB = `")
+                .then(response => {
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    return response.json();
+                })
+                .then(data => {
+                    originalData = data;
+                    updateStats(data);
+                    updateTable(data);
+                })
+                .catch(error => console.error("Error loading JSON data:", error));
+        });
+    </script>
+</head>
+<body>
+    <h1>URL Fingerprint Report</h1>
+    <div class="stats">
+        <div id="cms-stats"></div>
+        <div id="other-stats"></div>
+        <div id="status-code-stats"></div>
+        <div id="all-stats"></div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">×</span>
+            <img id="modal-img" src="" alt="Screenshot">
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+    <button id="copy-urls" title="Copy URLs">复制当前指纹所有URL</button>
+    <button id="scroll-to-top" title="Go to Top">⇧</button>
+</body>
+</html>
+`
 
 // 创建 HTML 报告
 func InitializeHTMLReport(filename string, json string) (*os.File, error) {
-	// 去除.html后缀
+	// 拼接 HTML 头部和 JSON 文件路径
 	var HtmlHeader = HtmlHeaderA + json + HtmlHeaderB
 	file, err := os.Create(filename)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("无法创建 HTML 文件: %v", err)
 	}
 	_, err = file.WriteString(HtmlHeader)
 	if err != nil {
 		file.Close()
-		return nil, err
+		return nil, fmt.Errorf("无法写入 HTML 文件: %v", err)
 	}
 	return file, nil
 }
-
-//// ReplaceHTMLWithJSON 函数将 HTML 文件名的扩展名替换为 JSON 扩展名
-//func ReplaceHTMLWithJSON(filePath string) string {
-//	// 获取文件名和扩展名
-//	base := filepath.Base(filePath)
-//	ext := filepath.Ext(base)
-//	nameWithoutExt := base[:len(base)-len(ext)]
-//
-//	// 生成新的 JSON 文件名
-//	return filepath.Join(filepath.Dir(filePath), nameWithoutExt+".json")
-//}
 
 // 定义全局互斥锁
 var jsonMutex sync.Mutex

@@ -4,82 +4,59 @@
 httpgo是一个web指纹识别工具，支持多线程、HTTP代理、批量识别、保存结果、截图展示。可自行添加指纹。
 
 ## 使用
-### 帮助
-```
-[shym]% go run main.go -h
-
- _       _     _
-| |__   | |_  | |_   _ __     __ _    ___
-| '_ \  | __| | __| | '_ \   / _' |  / _ \
-| | | | | |_  | |_  | |_) | | (_| | | (_) |
-|_| |_|  \__|  \__| | .__/   \__, |  \___/
-                    |_|      |___/
-
-Usage of :
-  -check
-    	检查新添加指纹规则的合规性
-  -file string
-    	请求的文件
-  -fingers string
-    	指纹文件 (default "fingers.json")
-  -hash string
-    	计算hash
-  -output string
-    	输出结果文件夹名称,不用加后缀(包含csv,json,html文件) (default "output")
-  -proxy string
-    	添加代理
-  -server string
-    	指定需要远程访问的output的文件夹名称，启动web服务，自带随机密码，增加安全性
-  -thead int
-    	并发数 (default 20)
-  -timeout duration
-    	超时时间 (default 8ns)
-  -url string
-    	请求的url
-```
 ### 单个url识别
-![image-20240815115840552](README.assets/image-20240815115840552.png)
+
+~~~
+[shym]% ./httpgo -file 'https://www.whitehouse.gov/'
+~~~
+
+![image-20250724162430758](README.assets/image-20250724162430758.png)
 
 ### 批量url识别
--file 指定批量url文件，每行一个url
 
--output 指定输出文件夹名称，不用加后缀，会在指定的文件夹生成csv,json,html文件
+~~~
+[shym]% ./httpgo -file test.txt
+~~~
 
--thead 指定并发数，未设置默认20
+![image-20250724162701994](README.assets/image-20250724162701994.png)
 
-![image-20240828135258064](README.assets/image-20240828135258064.png)
+如不指定-outfile ，结果则默认保存在output文件夹下，自动保存格式为3种
 
-会在指定的-output的路径下生成对应的result.csv表格文件
+![image-20250724162913777](README.assets/image-20250724162913777.png)
 
-![image-20240828135511437](README.assets/image-20240828135511437.png)
+### 推荐用法
 
-同时也会生成result.html网页文件和指纹信息result.json文件
+-file 要批量识别的url的文件
 
-如果想查看result.html页面，可以使用-server 开启web服务，自动生成一个加密的web服务
+-output 为保存结果的路径
 
-![image-20240828135747673](README.assets/image-20240828135747673.png)
+-server 开启保存结果路径的web服务（会默认添加20位随机的密码，防止未授权）
 
-![image-20240828135942331](README.assets/image-20240828135942331.png)
+~~~
+[shym]% ./httpgo -file test.txt -output res1 -server res1
+~~~
 
-![image-20240828140106825](README.assets/image-20240828140106825.png)
+![image-20250724163607595](README.assets/image-20250724163607595.png)
 
-当输入账号密码认证过后，可直接访问根目录，下载csv文件，方便在服务器部署时，下载csv结果
+运行后即可实时查看指纹结果页面，输入账号密码即可
 
-![image-20240828140231253](README.assets/image-20240828140231253.png)
+![image-20250724163807325](README.assets/image-20250724163807325.png)
 
+![image-20250724164539221](README.assets/image-20250724164539221.png)
 
+图片点击可放大，点击对应指纹即可查看当前指纹的所有结果，右下角按钮点击可复制当前指纹的所有URL
 
-或在html结果路径下使用python3 -m http.server 3333起一个web服务
+还可以直接访问web的根路径，下载其他格式的指纹结果文件。
 
-![image-20240815120249467](README.assets/image-20240815120249467.png)
+### 指纹json检查
 
-访问target.html
+检查新添加的指纹是否存在格式错误，添加指纹后可以尝试允许，防止写错。
 
-![image-20240815120309736](README.assets/image-20240815120309736.png)
+~~~
+./httpgo -check
+~~~
 
-点击对应的蓝色按钮可仅查看对应指纹信息如点击【苏迪WebPlus Pro--个性化门户集群平台】
-
-![image-20240815120332257](README.assets/image-20240815120332257.png)
+![image-20250724164616957](README.assets/image-20250724164616957.png)
 
 
 
@@ -112,5 +89,9 @@ body=\"<link href=\\\"/jcms/\" 匹配的为body中是否包含<link href="/jcms/
 body=\"1234\\&\\&1111\" 匹配的为body中是否包含1234&&1111
 ~~~
 
+指纹目前仅分了两种类型一类是cms，一类是other，方便在web中区分重点。
 
+![image-20250724165856868](README.assets/image-20250724165856868.png)
+
+![image-20250724170013961](README.assets/image-20250724170013961.png)
 

@@ -29,7 +29,7 @@ func main() {
 	// 定义命令行标志
 	urlFlag := flag.String("url", "", "请求的url")
 	fileFlag := flag.String("file", "", "请求的文件")
-	proxyFlag := flag.String("proxy", "", "添加代理")
+	proxyFlag := flag.String("proxy", "", "添加代理，仅支持http，如http://127.0.0.1:8080")
 	timeoutInt := flag.Duration("timeout", 8, "超时时间")
 	thead := flag.Int("thead", 20, "并发数")
 	fingers := flag.String("fingers", "fingers.json", "指纹文件")
@@ -53,7 +53,7 @@ func main() {
 | | | | | |_  | |_  | |_) | | (_| | | (_) |
 |_| |_|  \__|  \__| | .__/   \__, |  \___/ 
                     |_|      |___/  
-							Version: 1.2.3
+							Shym
 	`)
 
 	// 解析命令行标志
@@ -76,7 +76,7 @@ func main() {
 		go func() {
 			newdir := dir + "/" + *server + "/"
 			// 取随机字符串作为密码
-			Spasswd := utils.GenerateRandomString(10)
+			Spasswd := utils.GenerateRandomString(20)
 			ipadd := httpgo.GetLocalIP()
 			//fmt.Println("ipadd:", ipadd)
 			// 获取随机未占用端口
@@ -88,10 +88,9 @@ func main() {
 			fmt.Printf("已启动web服务，可直接访问下面链接，进行实时查看结果\n")
 			fmt.Printf("localhost：http://127.0.0.1:%d/%s.html\n", port, *server)
 			fmt.Printf("Serving：http://%s:%d/%s.html\n", ipadd, port, *server)
+			fmt.Printf("Serving：http://0.0.0.0:%d/%s.html\n", port, *server)
 			fmt.Printf("UserName: admin\n")
 			fmt.Printf("Password: %s\n", Spasswd)
-			fmt.Printf("一键访问：http://admin:%s@127.0.0.1:%d/%s.html\n", Spasswd, port, *server)
-			fmt.Printf("一键访问：http://admin:%s@%s:%d/%s.html\n", Spasswd, ipadd, port, *server)
 			fmt.Printf("----------------------------------------------------------------------------------\n")
 			time.Sleep(3 * time.Second)
 			err = httpgo.ServeDirectoryWithAuth(newdir, "admin", Spasswd, port)
