@@ -1,5 +1,65 @@
 [
     {
+        "name": "【新中大ERP企业管理软件】",
+        "keyword": "body=\"Resource/pic/product_btn.png\" || body=\"/login/SSOValidation.html\"",
+        "type": "cms"
+    },
+    {
+        "name": "【森鑫炬水务企业综合运营平台】",
+        "keyword": "title=\"森鑫炬水务企业综合运营平台\" || (body=\"Content/easyui.css\" && body=\"重庆森鑫炬科技有限公司\")",
+        "type": "cms"
+    },
+    {
+        "name": "【弥特科技全流程追溯系统】",
+        "keyword": "(body=\"chunk-libs.45edf705.css\" && title=\"产品追溯系统\") || title=\"4.1.0追溯系统\"",
+        "type": "cms"
+    },
+    {
+        "name": "【usdtAdmin收款管理系统】",
+        "keyword": "body=\"/usdtmerchant/login/reg.html\"",
+        "type": "cms"
+    },
+    {
+        "name": "【天锐绿盘云文档安全管理系统】",
+        "keyword": "body=\"/lddsm/\" || title=\"天锐绿盘\" || title=\"Tipray LeaderDisk\" || body=\"location.href=location.href+\\\"lddsm\\\"\"",
+        "type": "cms"
+    },
+    {
+        "name": "【山石网科HSM-monitor】",
+        "keyword": "body=\"login_hsm-all.css\"",
+        "type": "cms"
+    },
+    {
+        "name": "【小皮面板】",
+        "keyword": "icon_hash=\"-1458616391\"",
+        "type": "cms"
+    },
+    {
+        "name": "【正阳天下水控系统】",
+        "keyword": "body=\"登陆页\" && body=\"水控消费后台管理系统\"",
+        "type": "cms"
+    },
+    {
+        "name": "【易知微-Easyv标准版】",
+        "keyword": "body=\"closeBrowserDownloadModal01dd6c693c7947cab6ec8d3204635c95\" || body=\"easyv-app\"",
+        "type": "cms"
+    },
+    {
+        "name": "【光典-电子档案管理系统】",
+        "keyword": "body=\"cfg-resource/system/common/js/respond.min.js\"",
+        "type": "cms"
+    },
+    {
+        "name": "【宏景软件-人才招聘系统】",
+        "keyword": "body=\"/dist/hireConfig.js\"",
+        "type": "cms"
+    },
+    {
+        "name": "【LaRecipe文档生成器】",
+        "keyword": "body=\"larecipe.index\"",
+        "type": "cms"
+    },
+    {
         "name": "【Electrolink】",
         "keyword": "title=\"Electrolink\"",
         "type": "cms"
@@ -8808,7 +8868,7 @@
     {
         "name": "【Gunicorn】",
         "keyword": "header=\"gunicorn\" || header=\"Server: gunicorn\"",
-        "type": "cms"
+        "type": "other"
     },
     {
         "name": "【Yxlink-WAF】",
@@ -27617,7 +27677,7 @@
     },
     {
         "name": "【宏景-HCM】",
-        "keyword": "(title=\"人力资源信息管理系统\" && body=\"src=\\\"/images/hcm/copyright.gif\\\"\") || body=\"src=\\\"/images/hcm/themes/default/login/login_banner2.png?v=12334\\\"\" || body=\"src=\\\"/general/sys/hjaxmanage.js\\\"\"",
+        "keyword": "body=\"/images/hcm/themes/default/login/li.png\" || (title=\"人力资源信息管理系统\" && body=\"src=\\\"/images/hcm/copyright.gif\\\"\") || body=\"src=\\\"/images/hcm/themes/default/login/login_banner2.png?v=12334\\\"\" || body=\"src=\\\"/general/sys/hjaxmanage.js\\\"\"",
         "type": "cms"
     },
     {
@@ -32461,7 +32521,7 @@
         "type": "cms"
     },
     {
-        "name": "【ZKTECO-Time Safety Management Platform】",
+        "name": "【ZKECO 时间&安全管理平台】",
         "keyword": "title=\"ZKECO 时间&安全管理平台\"",
         "type": "cms"
     },
@@ -32471,7 +32531,7 @@
         "type": "cms"
     },
     {
-        "name": "【ZKTECO-Attendance Management System】",
+        "name": "【ZKTECO-ZKTime-考勤管理系统】",
         "keyword": "((body=\"/media/images/ZKECO16.ico\" || header=\"sessionidadms\") && title=\"考勤管理系统\")",
         "type": "cms"
     },

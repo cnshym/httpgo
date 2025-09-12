@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-var Charset1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+var Charset1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@_=+.<>{}"
 
 func GenerateRandomString(length int) string {
 	rand.Seed(time.Now().UnixNano())

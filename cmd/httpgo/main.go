@@ -31,7 +31,7 @@ func main() {
 	fileFlag := flag.String("file", "", "请求的文件")
 	proxyFlag := flag.String("proxy", "", "添加代理，仅支持http，如http://127.0.0.1:8080")
 	timeoutInt := flag.Duration("timeout", 8, "超时时间")
-	thead := flag.Int("thead", 20, "并发数")
+	thead := flag.Int("thead", 10, "并发数")
 	fingers := flag.String("fingers", "fingers.json", "指纹文件")
 	hash := flag.String("hash", "", "计算hash")
 	output := flag.String("output", "output", "输出结果文件夹名称,不用加后缀(包含csv,json,html文件)")
