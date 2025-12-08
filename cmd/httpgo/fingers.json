@@ -1,5 +1,80 @@
 [
     {
+        "name": "【React-Server-组件（RSC）】",
+        "keyword": "header=\": text/x-component\"",
+        "type": "cms"
+    },
+    {
+        "name": "【存在Next.js】",
+        "keyword": "body=\"/_next/static/\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Dify】",
+        "keyword": "body=\"content=\\\"Dify\\\"\" && body=\"/_next/static\"",
+        "type": "cms"
+    },
+    {
+        "name": "【新点e交易】",
+        "keyword": "body=\"js/lib/swiperV5.4.5/swiper.min.css\"",
+        "type": "cms"
+    },
+    {
+        "name": "【IdeaCMS】",
+        "keyword": "icon_hash=\"-1033616879\"",
+        "type": "cms"
+    },
+    {
+        "name": "【MCP-Hub-Dashboard】",
+        "keyword": "body=\"MCP Hub Dashboard\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Omnissa-Workspace-ONE-UEM】",
+        "keyword": "body=\"/airwatch/default.aspx\" || header=\"/airwatch/default.aspx\"",
+        "type": "cms"
+    },
+    {
+        "name": "【友数聚CPAS审计管理系统V4】",
+        "keyword": "body=\"/cpasm4/static/cap/font/iconfont.css\"",
+        "type": "cms"
+    },
+    {
+        "name": "【TpMeCMS】",
+        "keyword": "body=\"TpMeCMS\"",
+        "type": "cms"
+    },
+    {
+        "name": "【为知笔记】",
+        "keyword": "title=\"WizNote\"",
+        "type": "cms"
+    },
+    {
+        "name": "【WGCLOUD】",
+        "keyword": "body=\"WGCLOUD\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Seepln Leasing-丰贺信息科技(上海)有限公司】",
+        "keyword": "body=\"js/user/login.js\" && body=\"../img/icon/\" && body=\"./js/common/api.js\"",
+        "type": "cms"
+    },
+    {
+        "name": "【dify.ai-企业级AI应用平台】",
+        "keyword": "body=\"dify.ai\" || body=\"/_next/static/css/db2356ee6212efef.css\"",
+        "type": "cms"
+    },
+    {
+        "name": "【看漢教育服務有限公司-HanWEB-Fanjian】",
+        "keyword": "body=\"Reported by HanWEB Fanjian Translation Server\"",
+        "type": "cms"
+    },
+    {
+        "name": "【Javashop电商系统】",
+        "keyword": "title=\"Javashop安装程序| Log in\" || body=\"view/deploy/list\"",
+        "type": "cms"
+    },
+    {
         "name": "【新中大ERP企业管理软件】",
         "keyword": "body=\"Resource/pic/product_btn.png\" || body=\"/login/SSOValidation.html\"",
         "type": "cms"
@@ -17211,8 +17286,8 @@
         "type": "cms"
     },
     {
-        "name": "【SMARTBI】",
-        "keyword": "body=\"gcfutil = jsloader.resolve('smartbi.gcf.gcfutil')\"",
+        "name": "【SmartBI】",
+        "keyword": "body=\"gcfutil = jsloader.resolve('smartbi.gcf.gcfutil')\" || body=\"css/bof_merge.css.jsp?islogin\"",
         "type": "cms"
     },
     {
